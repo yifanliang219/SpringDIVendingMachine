@@ -9,12 +9,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Inventory {
 
     private final Map<Integer, Item> items = new HashMap<>();
 
     private final String file_location;
 
+    @Autowired
+    public Inventory(){
+        this.file_location = "inventory.txt";
+        load_from_file();
+    }
+    
     public Inventory(String file_location){
         this.file_location = file_location;
         load_from_file();

@@ -12,10 +12,15 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class VM_Controller implements Runnable {
 
     private final VM_Services services;
 
+    @Autowired
     public VM_Controller(VM_Services services) {
         this.services = services;
     }

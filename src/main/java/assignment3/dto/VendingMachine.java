@@ -2,6 +2,9 @@ package assignment3.dto;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class VendingMachine {
 
     private VM_State currentState;

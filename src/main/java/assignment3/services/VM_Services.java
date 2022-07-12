@@ -11,13 +11,26 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class VM_Services {
 
     private final VendingMachine vendingMachine;
     private final Inventory inventory;
 
-    private final String order_history_file_location;
+    private final String order_history_file_location; 
 
+    @Autowired
+    public VM_Services(VendingMachine vendingMachine, Inventory inventory) {
+        this.vendingMachine = vendingMachine;
+        this.inventory = inventory;
+        this.order_history_file_location = "order_history.txt";
+        initialize_vm();
+    }
+    
     public VM_Services(VendingMachine vendingMachine, Inventory inventory, String order_history_file_location) {
         this.vendingMachine = vendingMachine;
         this.inventory = inventory;
